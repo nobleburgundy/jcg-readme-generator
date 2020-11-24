@@ -1,0 +1,23 @@
+{
+  "name": "jcg-readme-generator",
+  "version": "1.0.0",
+  "description": "A Node.js application that generates a great README for you so you can concentrate on development!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nobleburgundy/jcg-readme-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nobleburgundy/jcg-readme-generator/issues"
+  },
+  "homepage": "https://github.com/nobleburgundy/jcg-readme-generator#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3"
+  }
+}
