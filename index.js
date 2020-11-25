@@ -49,7 +49,82 @@ inquirer
   .prompt(questions)
   .then((answers) => {
     console.log(answers);
+    writeReadMe(answers);
   })
   .catch((error) => {
     console.error(error);
   });
+
+const writeReadMe = (answers) => {
+  fs.writeFile("README.md", readmeString(answers), (error) => {
+    error ? console.error(error) : console.log("README successfully created.");
+  });
+};
+
+const readmeString = (answers) => {
+  return `# ${answers.title}
+
+## Description 
+
+${answers.description}
+
+If you need an example of a good README, check out [the VSCode repository](https://github.com/microsoft/vscode).
+
+
+## Table of Contents (Optional)
+
+${answers.tableOfContents}
+
+* [Installation](#installation)
+* [Usage](#usage)
+* [Credits](#credits)
+* [License](#license)
+
+
+## Installation
+
+${answers.installation}
+
+
+## Usage 
+
+${answers.howToUse}
+
+
+## Credits
+
+${answers.credits}
+
+
+
+## License
+
+${answers.license} If you need help choosing a license, use [https://choosealicense.com/](https://choosealicense.com/)
+
+
+---
+
+🏆 The sections listed above are the minimum for a good README, but your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
+
+## Badges
+
+${answers.badges}
+
+![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
+
+Badges aren't _necessary_, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
+
+
+## Contributing
+
+${answers.contributing}
+
+## Tests
+
+${answers.tests}
+
+
+---
+
+`;
+};
