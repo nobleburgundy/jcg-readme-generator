@@ -68,6 +68,10 @@ inquirer
   });
 
 const writeReadMe = (answers) => {
+  // remove trailing slash if user added it
+  if (answers.directory.substring([answers.directory.length - 1]) === "/") {
+    answers.directory = answers.directory.substring(0, answers.directory.length - 1);
+  }
   fs.writeFile(`${answers.directory}/${answers.file_name}`, readmeString(answers), (error) => {
     error ? console.error(error) : console.log("README successfully created.");
   });
