@@ -5,6 +5,18 @@ const fs = require("fs");
 const questions = [
   {
     type: "input",
+    name: "file_name",
+    default: "README.md",
+    message: "Enter a name for your file (hit Enter for 'README.md'?",
+  },
+  {
+    type: "input",
+    name: "directory",
+    default: "./",
+    message: "What directory would you like this file saved to (hit Enter for current directory)?",
+  },
+  {
+    type: "input",
     name: "title",
     message: "What is the title of your application?",
   },
@@ -56,7 +68,7 @@ inquirer
   });
 
 const writeReadMe = (answers) => {
-  fs.writeFile("README.md", readmeString(answers), (error) => {
+  fs.writeFile(`${answers.directory}/${answers.file_name}`, readmeString(answers), (error) => {
     error ? console.error(error) : console.log("README successfully created.");
   });
 };
@@ -125,6 +137,5 @@ ${answers.tests}
 
 
 ---
-
 `;
 };
