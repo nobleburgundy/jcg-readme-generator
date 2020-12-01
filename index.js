@@ -22,6 +22,11 @@ const questions = [
   },
   {
     type: "input",
+    name: "repository",
+    message: "Enter the name of the repository: ",
+  },
+  {
+    type: "input",
     name: "description",
     message: "Please enter a description: ",
   },
@@ -33,7 +38,7 @@ const questions = [
   {
     type: "input",
     name: "usage",
-    message: "Usage: ",
+    message: "Usage Information: ",
   },
   {
     type: "input",
@@ -43,7 +48,12 @@ const questions = [
   {
     type: "input",
     name: "tests",
-    message: "How to run tests: ",
+    message: "Test instructions: ",
+  },
+  {
+    type: "rawlist",
+    name: "license",
+    choices: ["MIT", "GNU GPLv3", "Mozilla Public License 2.0", "Apache License 2.0", "Other"],
   },
   {
     type: "input",
@@ -54,6 +64,11 @@ const questions = [
     type: "input",
     name: "email",
     message: "Email address: ",
+  },
+  {
+    type: "checkbox",
+    name: "badges",
+    choices: ["Top Language", "Code Size", "Repo Size", "Lines of Code", "No badges please"],
   },
 ];
 
@@ -66,6 +81,27 @@ inquirer
   .catch((error) => {
     console.error(error);
   });
+
+const licenseBadgeGenerator = (answers) => {
+  const licenseKey = answers.license.toLowerCase().substring(0, answers.license.indexOf(" "));
+
+  const licenseURLMap = {
+    mit: `[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/${answers.username}/${answers.repository}/blob/master/LICENSEs)`,
+    gnu:
+      "[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)",
+    mozilla:
+      "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)",
+    apache:
+      "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)",
+    other: "",
+  };
+
+  return licenseURLMap[licenseKey];
+};
+
+const badgeGenerator = ([badges]) => {
+  // Lines of Code https://img.shields.io/tokei/lines/github/${answers.username}/${answers.repository}
+};
 
 const writeReadMe = (answers) => {
   // remove trailing slash if user added it
@@ -115,8 +151,7 @@ ${answers.credits}
 
 ## License
 
-${answers.license} If you need help choosing a license, use [https://choosealicense.com/](https://choosealicense.com/)
-
+${licenseBadgeGenerator(answers)}
 
 ---
 
