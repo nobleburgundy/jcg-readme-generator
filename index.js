@@ -122,42 +122,39 @@ const writeReadMe = (answers) => {
 const readmeString = (answers) => {
   return `# ${answers.title}
 
-## Description 
+    ## Description 
 
-${answers.description}
+    ${answers.description}
 
-## Installation
+    ## Installation
 
-${answers.installation}
+    ${answers.installation}
 
+    ## Usage 
 
-## Usage 
+    ${answers.howToUse}
 
-${answers.howToUse}
+    ## Credits
 
+    ${answers.credits}
 
-## Credits
+    ## License
 
-${answers.credits}
+    ${licenseBadgeGenerator(answers)}
 
+    ---
 
-## License
+    ## Badges
 
-${licenseBadgeGenerator(answers)}
+    ${answers.badges}
 
----
+    ## Contributing
 
-## Badges
+    ${answers.contributing}
 
-${answers.badges}
+    ## Tests
 
-## Contributing
+    ${answers.tests}
 
-${answers.contributing}
-
-## Tests
-
-${answers.tests}
-
----`;
+    ---`;
 };
