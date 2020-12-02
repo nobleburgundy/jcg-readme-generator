@@ -99,8 +99,14 @@ const licenseBadgeGenerator = (answers) => {
   return licenseURLMap[licenseKey];
 };
 
-const badgeGenerator = ([badges]) => {
+const badgeGenerator = (badgeArray) => {
   // Lines of Code https://img.shields.io/tokei/lines/github/${answers.username}/${answers.repository}
+  const baseURL = "https://img.shields.io/tokei";
+  const badgeObject = {
+    linesOfCode: `${baseURL}/lines/github/${answers.username}/${answers.repository}`,
+    topLanguage: `${baseURL}/languages/top/github/${answers.username}/${answers.repository}`,
+    codeSize: `${baseURL}/languages/code-size/${answers.username}/${answers.repository}`,
+  };
 };
 
 const writeReadMe = (answers) => {
@@ -120,19 +126,6 @@ const readmeString = (answers) => {
 
 ${answers.description}
 
-If you need an example of a good README, check out [the VSCode repository](https://github.com/microsoft/vscode).
-
-
-## Table of Contents (Optional)
-
-${answers.tableOfContents}
-
-* [Installation](#installation)
-* [Usage](#usage)
-* [Credits](#credits)
-* [License](#license)
-
-
 ## Installation
 
 ${answers.installation}
@@ -148,23 +141,15 @@ ${answers.howToUse}
 ${answers.credits}
 
 
-
 ## License
 
 ${licenseBadgeGenerator(answers)}
 
 ---
 
-🏆 The sections listed above are the minimum for a good README, but your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
 ## Badges
 
 ${answers.badges}
-
-![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
-
-Badges aren't _necessary_, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-
 
 ## Contributing
 
@@ -174,7 +159,5 @@ ${answers.contributing}
 
 ${answers.tests}
 
-
----
-`;
+---`;
 };
