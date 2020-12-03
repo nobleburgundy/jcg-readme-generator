@@ -164,8 +164,6 @@ ${answers.credits}
 
 ${licenseBadgeGenerator(answers)}
 
----
-
 ## Badges
 
 ${answers.badges}
@@ -176,7 +174,5 @@ ${answers.contributing}
 
 ## Tests
 
-${answers.tests}
-
----`;
+${answers.tests}`;
 };

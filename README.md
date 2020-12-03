@@ -33,5 +33,3 @@ Contributions are welcome. If you are interested in contributing to this project
 ## Tests
 
 `npm run test`
-
---------------------------------------------------------------------------------
