@@ -1,4 +1,4 @@
-# Readme Generator
+# README Generator
 
 ## Description
 
@@ -6,33 +6,29 @@ This is a Node.js application that creates a README file for you based on input.
 
 ## Installation
 
-Go to githup and clone the repo, then run `npm install`
+1. Clone the repo.
+2. From the project root, run `npm install`.
 
 ## Usage
 
 ### Demo Video
 
-![Demo](demo_video.mp4)
+![Demo](demo.gif)
 
-`node index.js`
+Once you have cloned the repo, run the following from the root of the project...
 
-## Credits
-
-undefined
+1. `node index.js`
+2. Follow the prompts and pay careful attention to where you want the README saved. The default is to save it to the current directory.
 
 ## License
 
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+Licensed under the MIT license.
 
---------------------------------------------------------------------------------
-
-## Badges
-
-Top Language,Code Size,Repo Size,Lines of Code
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/nobleburgundy/jcg-readme-generator/blob/master/LICENSEs)
 
 ## Contributing
 
-undefined
+Contributions are welcome. If you are interested in contributing to this project, please open a pull request. Bug fixes, feature requests, and documentation updates/fixes are all encouraged.
 
 ## Tests
 
