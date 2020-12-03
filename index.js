@@ -17,13 +17,23 @@ const questions = [
   },
   {
     type: "input",
-    name: "title",
-    message: "What is the title of your application?",
+    name: "username",
+    message: "Your github username: ",
+  },
+  {
+    type: "input",
+    name: "email",
+    message: "Email address: ",
   },
   {
     type: "input",
     name: "repository",
     message: "Enter the name of the repository: ",
+  },
+  {
+    type: "input",
+    name: "title",
+    message: "What is the title of your application?",
   },
   {
     type: "input",
@@ -51,24 +61,31 @@ const questions = [
     message: "Test instructions: ",
   },
   {
-    type: "rawlist",
+    type: "list",
     name: "license",
     choices: ["MIT", "GNU GPLv3", "Mozilla Public License 2.0", "Apache License 2.0", "Other"],
   },
   {
-    type: "input",
-    name: "username",
-    message: "Your github username: ",
+    type: "confirm",
+    name: "add_credits",
+    message: "Would you like to add Credits to the README?",
   },
   {
     type: "input",
-    name: "email",
-    message: "Email address: ",
+    name: "credits",
+    message: "Add credits: ",
+    when: (answers) => answers.expand_test,
+  },
+  {
+    type: "confirm",
+    name: "add_badges",
+    message: "Would you like to add some cool badges to your README?",
   },
   {
     type: "checkbox",
     name: "badges",
-    choices: ["Top Language", "Code Size", "Repo Size", "Lines of Code", "No badges please"],
+    when: (answers) => answers.add_badges,
+    choices: ["Top Language", "Code Size", "Repo Size", "Lines of Code"],
   },
 ];
 
@@ -83,10 +100,10 @@ inquirer
   });
 
 const licenseBadgeGenerator = (answers) => {
-  const licenseKey = answers.license.toLowerCase().substring(0, answers.license.indexOf(" "));
-
+  const licenseKey =
+    answers.license === "MIT" ? "mit" : answers.license.toLowerCase().substring(0, answers.license.indexOf(" "));
   const licenseURLMap = {
-    mit: `[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/${answers.username}/${answers.repository}/blob/master/LICENSEs)`,
+    mit: `[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/${answers.username}/${answers.repository}/blob/master/LICENSE)`,
     gnu:
       "[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)",
     mozilla:
@@ -99,7 +116,7 @@ const licenseBadgeGenerator = (answers) => {
   return licenseURLMap[licenseKey];
 };
 
-const badgeGenerator = (badgeArray) => {
+const badgeGenerator = (answers) => {
   // Lines of Code https://img.shields.io/tokei/lines/github/${answers.username}/${answers.repository}
   const baseURL = "https://img.shields.io/tokei";
   const badgeObject = {
@@ -119,42 +136,47 @@ const writeReadMe = (answers) => {
   });
 };
 
+// Optional Sections
+const optionalUsage = (answers) => {};
+
+// readme string template
 const readmeString = (answers) => {
   return `# ${answers.title}
+${badgeGenerator(answers)}
 
-    ## Description 
+## Description 
 
-    ${answers.description}
+${answers.description}
 
-    ## Installation
+## Installation
 
-    ${answers.installation}
+${answers.installation}
 
-    ## Usage 
+## Usage 
 
-    ${answers.howToUse}
+${answers.usage}
 
-    ## Credits
+## Credits
 
-    ${answers.credits}
+${answers.credits}
 
-    ## License
+## License
 
-    ${licenseBadgeGenerator(answers)}
+${licenseBadgeGenerator(answers)}
 
-    ---
+---
 
-    ## Badges
+## Badges
 
-    ${answers.badges}
+${answers.badges}
 
-    ## Contributing
+## Contributing
 
-    ${answers.contributing}
+${answers.contributing}
 
-    ## Tests
+## Tests
 
-    ${answers.tests}
+${answers.tests}
 
-    ---`;
+---`;
 };
