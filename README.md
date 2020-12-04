@@ -26,7 +26,7 @@ Once you have cloned the repo, run the following from the root of the project...
 
 Licensed under the MIT license.
 
-[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/nobleburgundy/jcg-readme-generator/blob/master/LICENSE)
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?color=red)](https://github.com/nobleburgundy/jcg-readme-generator/blob/master/LICENSE)
 
 ## Contributing
 
