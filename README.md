@@ -1,5 +1,7 @@
 # README Generator
 
+![Top Language](https://img.shields.io/github/languages/top/nobleburgundy/jcg-readme-generator?color=blue) ![Code Size](https://img.shields.io/github/languages/code-size/nobleburgundy/jcg-readme-generator?color=blue) ![Repo Size](https://img.shields.io/github/repo-size/nobleburgundy/jcg-readme-generator?color=blue) ![Lines of Code](https://img.shields.io/tokei/lines/github/nobleburgundy/jcg-readme-generator?color=blue)
+
 ## Description
 
 This is a Node.js application that creates a README file for you based on input.

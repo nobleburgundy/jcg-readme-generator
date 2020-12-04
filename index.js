@@ -116,14 +116,20 @@ const licenseBadgeGenerator = (answers) => {
   return licenseURLMap[licenseKey];
 };
 
-const badgeGenerator = (answers) => {
-  // Lines of Code https://img.shields.io/tokei/lines/github/${answers.username}/${answers.repository}
-  const baseURL = "https://img.shields.io/tokei";
+const badgeGenerator = (answers, color = "blue") => {
+  const baseURL = "https://img.shields.io";
   const badgeObject = {
-    linesOfCode: `${baseURL}/lines/github/${answers.username}/${answers.repository}`,
-    topLanguage: `${baseURL}/languages/top/github/${answers.username}/${answers.repository}`,
-    codeSize: `${baseURL}/languages/code-size/${answers.username}/${answers.repository}`,
+    "Top Language": `![Top Language](${baseURL}/github/languages/top/${answers.username}/${answers.repository}?color=${color})`,
+    "Code Size": `![Code Size](${baseURL}/github/languages/code-size/${answers.username}/${answers.repository}?color=${color})`,
+    "Repo Size": `![Repo Size](${baseURL}/github/repo-size/${answers.username}/${answers.repository}?color=${color})`,
+    "Lines of Code": `![Lines of Code](${baseURL}/tokei/lines/github/${answers.username}/${answers.repository}?color=${color})`,
   };
+  let badgeString = "";
+  answers.badges.forEach((element) => {
+    badgeString += badgeObject[element] + "\n";
+  });
+
+  return badgeString;
 };
 
 const writeReadMe = (answers) => {
