@@ -29,11 +29,19 @@ const questions = [
     type: "input",
     name: "repository",
     message: "Enter the name of the repository: ",
+    validate: (value) => {
+      if (value) return true;
+      return "Repository name is required.";
+    },
   },
   {
     type: "input",
     name: "title",
     message: "What is the title of your application?",
+    validate: (value) => {
+      if (value) return true;
+      return "Title is required.";
+    },
   },
   {
     type: "input",
@@ -99,17 +107,14 @@ inquirer
     console.error(error);
   });
 
-const licenseBadgeGenerator = (answers) => {
+const licenseBadgeGenerator = (answers, color) => {
   const licenseKey =
     answers.license === "MIT" ? "mit" : answers.license.toLowerCase().substring(0, answers.license.indexOf(" "));
   const licenseURLMap = {
-    mit: `[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/${answers.username}/${answers.repository}/blob/master/LICENSE)`,
-    gnu:
-      "[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)",
-    mozilla:
-      "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)",
-    apache:
-      "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)",
+    mit: `[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?color=${color})](https://github.com/${answers.username}/${answers.repository}/blob/master/LICENSE)`,
+    gnu: `[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-${color}.svg)](https://opensource.org/licenses/)`,
+    mozilla: `[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-${color}.svg)](https://opensource.org/licenses/MPL-2.0)`,
+    apache: `[![License](https://img.shields.io/badge/License-Apache%202.0-${color}.svg)](https://opensource.org/licenses/Apache-2.0)`,
     other: "",
   };
 
@@ -142,13 +147,10 @@ const writeReadMe = (answers) => {
   });
 };
 
-// Optional Sections
-const optionalUsage = (answers) => {};
-
 // readme string template
 const readmeString = (answers) => {
   return `# ${answers.title}
-${badgeGenerator(answers)}
+${badgeGenerator(answers)} ${licenseBadgeGenerator(answers, "red")}
 
 ## Description 
 
@@ -168,7 +170,9 @@ ${answers.credits}
 
 ## License
 
-${licenseBadgeGenerator(answers)}
+Licensed under the ${answers.license} license.
+
+${licenseBadgeGenerator(answers, "red")}
 
 ## Badges
 
@@ -180,5 +184,10 @@ ${answers.contributing}
 
 ## Tests
 
-${answers.tests}`;
+${answers.tests}
+
+## Questions? 
+
+Please contact me via email at ${answers.email} with any questions.
+`;
 };
