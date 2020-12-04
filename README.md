@@ -1,6 +1,6 @@
 # README Generator
 
-![Top Language](https://img.shields.io/github/languages/top/nobleburgundy/jcg-readme-generator?color=blue) ![Code Size](https://img.shields.io/github/languages/code-size/nobleburgundy/jcg-readme-generator?color=blue) ![Repo Size](https://img.shields.io/github/repo-size/nobleburgundy/jcg-readme-generator?color=blue) ![Lines of Code](https://img.shields.io/tokei/lines/github/nobleburgundy/jcg-readme-generator?color=blue) [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?color=red)](https://github.com/nobleburgundy/jcg-readme-generator/blob/master/LICENSE)
+![Code Size](https://img.shields.io/github/languages/code-size/nobleburgundy/jcg-readme-generator?color=blue) ![Repo Size](https://img.shields.io/github/repo-size/nobleburgundy/jcg-readme-generator?color=blue) ![Lines of Code](https://img.shields.io/tokei/lines/github/nobleburgundy/jcg-readme-generator?color=blue) [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?color=red)](https://github.com/nobleburgundy/jcg-readme-generator/blob/master/LICENSE)
 
 ## Description
 
