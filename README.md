@@ -31,6 +31,8 @@ Once you have cloned the repo, run the following from the root of the project...
 
 ![Demo](demo.gif)
 
+A full demo video can be viewed [here](https://drive.google.com/file/d/17d-h_epbpuQwAMbKkfzd2qHIJX8iP4Bm/view?usp=sharing).
+
 ## License
 
 Licensed under the MIT license.
