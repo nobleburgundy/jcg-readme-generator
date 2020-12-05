@@ -27,7 +27,7 @@ Once you have cloned the repo, run the following from the root of the project...
 1. `node index.js`
 2. Follow the prompts and pay careful attention to where you want the README saved. The default is to save it to the current directory.
 
-### Demo Video
+### Demo
 
 ![Demo](demo.gif)
 
@@ -42,6 +42,14 @@ Licensed under the MIT license.
 ## Contributing
 
 Contributions are welcome. If you are interested in contributing to this project, please open a pull request. Bug fixes, feature requests, and documentation updates/fixes are all encouraged.
+
+## Credits
+
+The `Inquirer` package and it's documentation was used extensively for this project.
+
+- [NPM](https://www.npmjs.com/package/inquirer)
+- [GitHub](https://github.com/SBoudrias/Inquirer.js)
+- [Examples](https://github.com/SBoudrias/Inquirer.js/tree/master/packages/inquirer/examples)
 
 ## Questions?
 
