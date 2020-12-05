@@ -2,6 +2,15 @@
 
 ![Code Size](https://img.shields.io/github/languages/code-size/nobleburgundy/jcg-readme-generator?color=blue) ![Repo Size](https://img.shields.io/github/repo-size/nobleburgundy/jcg-readme-generator?color=blue) ![Lines of Code](https://img.shields.io/tokei/lines/github/nobleburgundy/jcg-readme-generator?color=blue) [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?color=red)](https://github.com/nobleburgundy/jcg-readme-generator/blob/master/LICENSE)
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Demo](#demo)
+- [License](#license)
+- [Contribution Guide](#contributing)
+- [Questions](#questions)
+
 ## Description
 
 This is a Node.js application that creates a README file for you based on input.
@@ -13,14 +22,14 @@ This is a Node.js application that creates a README file for you based on input.
 
 ## Usage
 
-### Demo Video
-
-![Demo](demo.gif)
-
 Once you have cloned the repo, run the following from the root of the project...
 
 1. `node index.js`
 2. Follow the prompts and pay careful attention to where you want the README saved. The default is to save it to the current directory.
+
+### Demo Video
+
+![Demo](demo.gif)
 
 ## License
 
