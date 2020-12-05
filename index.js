@@ -85,6 +85,9 @@ const questions = [
     type: "confirm",
     name: "add_credits",
     message: "Would you like to add Credits to the README?",
+    filter: function (value) {
+      this.credits = "";
+    },
   },
   {
     type: "input",
@@ -92,7 +95,7 @@ const questions = [
     message: "Add credits: ",
     when: (answers) => answers.add_credits,
     filter: (value) => {
-      return `## Credits\n\n${value}`;
+      return `\n## Credits\n\n${value}`;
     },
   },
   {
@@ -115,6 +118,11 @@ const questions = [
     name: "badges",
     when: (answers) => answers.username,
     choices: ["Top Language", "Code Size", "Repo Size", "Lines of Code"],
+  },
+  {
+    type: "confirm",
+    name: "toc_confirm",
+    message: "Would you like to add a Table of Contents to the beginning of the REAMDE?",
   },
 ];
 
@@ -170,10 +178,43 @@ const writeReadMe = (answers) => {
   });
 };
 
+const tableOfContentsGenerator = (answers) => {
+  let tocString = "";
+  if (answers.toc_confirm) {
+    tocString = "\n\n## Table of Contents\n";
+    const sectionArr = [
+      "descrtiption",
+      "installation",
+      "usage",
+      "credits",
+      "license",
+      "contributing",
+      "tests",
+      "questions",
+    ];
+    sectionArr.forEach((section) => {
+      if (answers[section]) {
+        tocString += `\n- [${capitalize(section)}](#${section})`;
+      }
+    });
+    console.log(tocString);
+  }
+  return tocString;
+};
+
+const capitalize = (word) => {
+  return word[0].toUpperCase() + word.substring(1);
+};
+
 // readme string template
+// TODO - handle optional sections better
 const readmeString = (answers) => {
+  if (!answers.credits) {
+    answers.credits = "";
+  }
   return `# ${answers.title}
 ${badgeGenerator(answers)} ${licenseBadgeGenerator(answers, "red")}
+${tableOfContentsGenerator(answers)}
 
 ## Description 
 
@@ -186,9 +227,7 @@ ${answers.installation}
 ## Usage 
 
 ${answers.usage}
-
 ${answers.credits}
-
 ## License
 
 Licensed under the ${answers.license} license.
