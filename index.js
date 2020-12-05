@@ -1,7 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-// Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
 const questions = [
   {
     type: "input",
@@ -17,13 +16,12 @@ const questions = [
   },
   {
     type: "input",
-    name: "username",
-    message: "Your github username: ",
-  },
-  {
-    type: "input",
     name: "email",
-    message: "Email address: ",
+    message: "Email address (used in Questions section for contact): ",
+    validate: (value) => {
+      if (value) return true;
+      return "Email address is required.";
+    },
   },
   {
     type: "input",
@@ -47,26 +45,36 @@ const questions = [
     type: "input",
     name: "description",
     message: "Please enter a description: ",
+    validate: (value) => {
+      if (value) return true;
+      return "Description is required.";
+    },
   },
   {
     type: "input",
     name: "installation",
     message: "Enter the installation instructions: ",
+    validate: (value) => {
+      if (value) return true;
+      return "Installation instructions are required.";
+    },
   },
   {
     type: "input",
     name: "usage",
-    message: "Usage Information: ",
+    message: "Usage information: ",
   },
   {
     type: "input",
-    name: "contribution",
-    message: "Contribution Guidelines: ",
+    name: "contributing",
+    default: `Contributions are welcome. If you are interested in contributing to this project, please open a pull request. Bug fixes, feature requests, and documentation updates/fixes are all encouraged.`,
+    message: "Contribution Guidelines (press Enter for default text): ",
   },
   {
     type: "input",
     name: "tests",
-    message: "Test instructions: ",
+    default: "No tests available at this time",
+    message: "Test instructions (default is 'No tests available at this time' if left blank): ",
   },
   {
     type: "list",
@@ -82,7 +90,10 @@ const questions = [
     type: "input",
     name: "credits",
     message: "Add credits: ",
-    when: (answers) => answers.expand_test,
+    when: (answers) => answers.add_credits,
+    filter: (value) => {
+      return `## Credits\n\n${value}`;
+    },
   },
   {
     type: "confirm",
@@ -90,9 +101,19 @@ const questions = [
     message: "Would you like to add some cool badges to your README?",
   },
   {
+    type: "input",
+    name: "username",
+    message: "Your github username: ",
+    when: (answers) => answers.add_badges,
+    validate: (value) => {
+      if (value) return true;
+      return "Github username is required to use badges.";
+    },
+  },
+  {
     type: "checkbox",
     name: "badges",
-    when: (answers) => answers.add_badges,
+    when: (answers) => answers.username,
     choices: ["Top Language", "Code Size", "Repo Size", "Lines of Code"],
   },
 ];
@@ -130,9 +151,11 @@ const badgeGenerator = (answers, color = "blue") => {
     "Lines of Code": `![Lines of Code](${baseURL}/tokei/lines/github/${answers.username}/${answers.repository}?color=${color})`,
   };
   let badgeString = "";
-  answers.badges.forEach((element) => {
-    badgeString += badgeObject[element] + "\n";
-  });
+  if (answers.badges) {
+    answers.badges.forEach((element) => {
+      badgeString += badgeObject[element] + "\n";
+    });
+  }
 
   return badgeString;
 };
@@ -164,8 +187,6 @@ ${answers.installation}
 
 ${answers.usage}
 
-## Credits
-
 ${answers.credits}
 
 ## License
@@ -173,10 +194,6 @@ ${answers.credits}
 Licensed under the ${answers.license} license.
 
 ${licenseBadgeGenerator(answers, "red")}
-
-## Badges
-
-${answers.badges}
 
 ## Contributing
 
