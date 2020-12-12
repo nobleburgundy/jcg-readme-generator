@@ -51,7 +51,7 @@ const questions = [
     },
   },
   {
-    type: "input",
+    type: "editor",
     name: "installation",
     message: "Enter the installation instructions: ",
     validate: (value) => {
@@ -60,7 +60,7 @@ const questions = [
     },
   },
   {
-    type: "input",
+    type: "editor",
     name: "usage",
     message: "Usage information: ",
   },
@@ -71,7 +71,7 @@ const questions = [
     message: "Contribution Guidelines (press Enter for default text): ",
   },
   {
-    type: "input",
+    type: "editor",
     name: "tests",
     default: "No tests available at this time",
     message: "Test instructions (default is 'No tests available at this time' if left blank): ",
@@ -86,6 +86,7 @@ const questions = [
     name: "add_credits",
     message: "Would you like to add Credits to the README?",
     filter: function (value) {
+      console.log(value);
       this.credits = "";
     },
   },
