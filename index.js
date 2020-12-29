@@ -91,7 +91,7 @@ const questions = [
     },
   },
   {
-    type: "input",
+    type: "editor",
     name: "credits",
     message: "Add credits: ",
     when: (answers) => answers.add_credits,
