@@ -118,7 +118,7 @@ const questions = [
     type: "checkbox",
     name: "badges",
     when: (answers) => answers.username,
-    choices: ["Top Language", "Code Size", "Repo Size", "Lines of Code"],
+    choices: ["Top Language", "Code Size", "Repo Size", "Lines of Code", "Travis Build Status"],
   },
   {
     type: "confirm",
@@ -158,7 +158,9 @@ const badgeGenerator = (answers, color = "blue") => {
     "Code Size": `![Code Size](${baseURL}/github/languages/code-size/${answers.username}/${answers.repository}?color=${color})`,
     "Repo Size": `![Repo Size](${baseURL}/github/repo-size/${answers.username}/${answers.repository}?color=${color})`,
     "Lines of Code": `![Lines of Code](${baseURL}/tokei/lines/github/${answers.username}/${answers.repository}?color=${color})`,
+    "Travis Build Status": `![Travis Build Status](https://travis-ci.com/${answers.username}/${answers.repository}.svg?branch=main?color=${color})`,
   };
+
   let badgeString = "";
   if (answers.badges) {
     answers.badges.forEach((element) => {
