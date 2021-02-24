@@ -158,7 +158,7 @@ const badgeGenerator = (answers, color = "blue") => {
     "Code Size": `![Code Size](${baseURL}/github/languages/code-size/${answers.username}/${answers.repository}?color=${color})`,
     "Repo Size": `![Repo Size](${baseURL}/github/repo-size/${answers.username}/${answers.repository}?color=${color})`,
     "Lines of Code": `![Lines of Code](${baseURL}/tokei/lines/github/${answers.username}/${answers.repository}?color=${color})`,
-    "Travis Build Status": `![Travis Build Status](https://travis-ci.com/${answers.username}/${answers.repository}.svg?branch=main?color=${color})`,
+    "Travis Build Status": `[![Build Status](https://travis-ci.com/${answers.username}/${answers.repository}.svg?branch=main)](https://travis-ci.com/nobleburgundy/pwa-budget)`,
   };
 
   let badgeString = "";
