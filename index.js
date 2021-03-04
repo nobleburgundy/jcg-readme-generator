@@ -67,7 +67,7 @@ const questions = [
   {
     type: "input",
     name: "contributing",
-    default: `Contributions are welcome. If you are interested in contributing to this project, please open a pull request. Bug fixes, feature requests, and documentation updates/fixes are all encouraged.`,
+    default: `Contributions are welcome. If you are interested in contributing to this project, please open a pull request. Bug fixes, tests, feature requests, and documentation updates/fixes are all encouraged.`,
     message: "Contribution Guidelines (press Enter for default text): ",
   },
   {
